@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="663.0" prefWidth="1069.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXVendorsController">
+    <children>
+        <MenuBar prefHeight="30" prefWidth="500" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <Menu text="Dashboards">
+                <MenuItem fx:id="dash_Printer" onAction="#switchToPrinterDash" text="Printer Dashboard" />
+                <MenuItem fx:id="dash_Toner" onAction="#switchToTonerDash" text="Toner Dashboard" />
+            </Menu>
+        </MenuBar>
+        <Button fx:id="saveBtn" layoutX="211.0" layoutY="421.0" mnemonicParsing="false" onAction="#addVendor" text="Save" />
+        <Button fx:id="editBtn" layoutX="214.0" layoutY="420.0" mnemonicParsing="false" onAction="#editTask" text="Edit" visible="false" />
+        <Button fx:id="refreshBtn" layoutX="274.0" layoutY="67.0" mnemonicParsing="false" onAction="#refresh">
+            <graphic>
+                <ImageView fitHeight="21" fitWidth="24">
+                    <Image url="@../resources/ic_refresh.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="deleteBtn" layoutX="578.0" layoutY="70.0" mnemonicParsing="false" onAction="#showConfirmationDialog" text="Delete" visible="false" />
+        <Button fx:id="createBtn" layoutX="452.0" layoutY="70.0" mnemonicParsing="false" onAction="#revertToDefault" text="Add Vendor" visible="false" />
+        <Button fx:id="editSaveBtn" layoutX="184.0" layoutY="421.0" mnemonicParsing="false" onAction="#editVendor" text="Save Changes" visible="false" />
+        <Button fx:id="cancelBtn" layoutX="112.0" layoutY="421.0" mnemonicParsing="false" onAction="#revertToDefault" text="Cancel" visible="false" />
+      <GridPane layoutX="32.0" layoutY="93.0" prefHeight="259.0" prefWidth="217.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.88887786865234" minWidth="10.0" prefWidth="68.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="132.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+              <Text fx:id="companyText" strokeType="OUTSIDE" strokeWidth="0.0" text="Company:" />
+              <TextField fx:id="companyField" GridPane.columnIndex="1" />
+              <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" GridPane.rowIndex="1" />
+              <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+              <Text fx:id="emailText" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.rowIndex="2" />
+              <TextField fx:id="emailField" prefHeight="27.0" prefWidth="147.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <Text fx:id="streetText" strokeType="OUTSIDE" strokeWidth="0.0" text="Street:" GridPane.rowIndex="3" />
+              <TextField fx:id="streetField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+              <Text fx:id="cityText" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" GridPane.rowIndex="4" />
+              <TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+              <Text fx:id="zipText" strokeType="OUTSIDE" strokeWidth="0.0" text="Zipcode:" GridPane.rowIndex="6" />
+              <TextField fx:id="zipField" prefHeight="27.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+              <Text fx:id="stateText" strokeType="OUTSIDE" strokeWidth="0.0" text="State:" GridPane.rowIndex="5" />
+              <ComboBox fx:id="statesCombo" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+      <ImageView fitHeight="66.0" fitWidth="56.0" layoutX="6.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/ic_logo.png" />
+         </image></ImageView>
+          <TableView fx:id="vendorTable" layoutX="275.0" layoutY="99.0" prefHeight="564.0" prefWidth="794.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="99.0">
+              <columns>
+                  <TableColumn fx:id="colID" prefWidth="26.777740478515625" text="ID" />
+                  <TableColumn fx:id="colCompany" prefWidth="132.22225952148438" text="Company" />
+                  <TableColumn fx:id="colPhone" prefWidth="79.0" text="Phone#" />
+                  <TableColumn fx:id="colEmail" prefWidth="155.33331298828125" text="Email" />
+                  <TableColumn fx:id="colStreet" prefWidth="144.66668701171875" text="Street" />
+                  <TableColumn fx:id="colCity" minWidth="0.0" prefWidth="120.6666259765625" text="City" />
+                  <TableColumn fx:id="colState" prefWidth="55.0" text="State" />
+                  <TableColumn fx:id="colZip" prefWidth="79.66668701171875" text="Zipcode" />
+              </columns>
+          </TableView>
+      <ImageView fx:id="closeWindowBtn" fitHeight="19.0" fitWidth="21.0" layoutX="796.0" layoutY="6.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="9">
+            <image>
+                <Image url="@../resources/ic_close_window.png" />
+            </image>
+      </ImageView>
+      <ImageView fx:id="minimizeWindowBtn" fitHeight="44.0" fitWidth="21.0" layoutX="750.0" layoutY="5.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="40">
+            <image>
+                <Image url="@../resources/ic_minimize_window.png" />
+            </image>
+      </ImageView>
+    </children>
+</AnchorPane>
