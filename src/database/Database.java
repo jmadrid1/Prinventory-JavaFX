@@ -1,12 +1,13 @@
 package database;
 
-import constants.DBSchema;
 import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import static constants.DBSchema.*;
 
 /**
  * Database class that creates the database schema if
@@ -20,8 +21,8 @@ public class Database {
     private PreparedStatement pstate;
 
     private static final String HOST = "jdbc:mysql://localhost:3306/print?&useSSL=false";
-    private static final String USER = "root";
-    private static final String PASSWORD = "fiver55";
+    private static final String USER = "admin";
+    private static final String PASSWORD = "admin123";
 
     /**
      * Creates the database's schema
@@ -31,43 +32,43 @@ public class Database {
 
         try {
 
-            String sql = "CREATE TABLE IF NOT EXISTS " + DBSchema.PRINTER_TABLE + " (" +
-                                                            DBSchema.ID + ", " +
-                                                            DBSchema.PRINTER_MAKE + ", " +
-                                                            DBSchema.PRINTER_MODEL + ", " +
-                                                            DBSchema.PRINTER_SERIAL + ", " +
-                                                            DBSchema.PRINTER_STATUS + ", " +
-                                                            DBSchema.PRINTER_COLOR + ", " +
-                                                            DBSchema.PRINTER_OWNER + ", " +
-                                                            DBSchema.PRINTER_DEPT + ", " +
-                                                            DBSchema.PRINTER_LOCATION + ", " +
-                                                            DBSchema.PRINTER_FLOOR + ", " +
-                                                            DBSchema.PRINTER_IP + ");";
+            String sql = "CREATE TABLE IF NOT EXISTS " + PRINTER_TABLE + " (" +
+                                                            ID + ", " +
+                                                            PRINTER_MAKE + ", " +
+                                                            PRINTER_MODEL + ", " +
+                                                            PRINTER_SERIAL + ", " +
+                                                            PRINTER_STATUS + ", " +
+                                                            PRINTER_COLOR + ", " +
+                                                            PRINTER_OWNER + ", " +
+                                                            PRINTER_DEPT + ", " +
+                                                            PRINTER_LOCATION + ", " +
+                                                            PRINTER_FLOOR + ", " +
+                                                            PRINTER_IP + ");";
 
             updateSQL(sql);
 
-            sql = "CREATE TABLE IF NOT EXISTS " + DBSchema.TONER_TABLE + " (" +
-                                                    DBSchema.ID + ", " +
-                                                    DBSchema.TONER_MAKE + ", " +
-                                                    DBSchema.TONER_MODEL + ", " +
-                                                    DBSchema.TONER_TMODEL + ", " +
-                                                    DBSchema.TONER_COLOR + ", " +
-                                                    DBSchema.TONER_BLACK + ", " +
-                                                    DBSchema.TONER_CYAN + ", " +
-                                                    DBSchema.TONER_YELLOW + ", " +
-                                                    DBSchema.TONER_MAGENTA + ");";
+            sql = "CREATE TABLE IF NOT EXISTS " + TONER_TABLE + " (" +
+                                                    ID + ", " +
+                                                    TONER_MAKE + ", " +
+                                                    TONER_MODEL + ", " +
+                                                    TONER_TMODEL + ", " +
+                                                    TONER_COLOR + ", " +
+                                                    TONER_BLACK + ", " +
+                                                    TONER_CYAN + ", " +
+                                                    TONER_YELLOW + ", " +
+                                                    TONER_MAGENTA + ");";
 
             updateSQL(sql);
 
-            sql = "CREATE TABLE IF NOT EXISTS " + DBSchema.VENDOR_TABLE + " (" +
-                                                    DBSchema.ID  + ", " +
-                                                    DBSchema.VENDOR_COMPANY + ", " +
-                                                    DBSchema.VENDOR_PHONE + ", " +
-                                                    DBSchema.VENDOR_EMAIL + ", " +
-                                                    DBSchema.VENDOR_STREET + ", " +
-                                                    DBSchema.VENDOR_CITY + ", " +
-                                                    DBSchema.VENDOR_STATE + ", " +
-                                                    DBSchema.VENDOR_ZIPCODE + ");";
+            sql = "CREATE TABLE IF NOT EXISTS " + VENDOR_TABLE + " (" +
+                                                    ID  + ", " +
+                                                    VENDOR_COMPANY + ", " +
+                                                    VENDOR_PHONE + ", " +
+                                                    VENDOR_EMAIL + ", " +
+                                                    VENDOR_STREET + ", " +
+                                                    VENDOR_CITY + ", " +
+                                                    VENDOR_STATE + ", " +
+                                                    VENDOR_ZIPCODE + ");";
 
             updateSQL(sql);
 

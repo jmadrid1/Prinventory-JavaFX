@@ -1,6 +1,5 @@
 package controllers;
 
-import constants.Stages;
 import database.Database;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -27,6 +26,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import static constants.Stages.*;
 
 /**
  * This is the controller class that
@@ -576,7 +577,7 @@ public class FXTonersController implements Initializable {
 
         try {
             Stage currentStage = (Stage) saveBtn.getScene().getWindow();
-            nav.newStage(Stages.PRINTERS_STAGE, "Prinventory - Printer Dashboard", true);
+            nav.newStage(PRINTERS_STAGE, "Prinventory - Printer Dashboard", true);
             currentStage.hide();
         } catch (Exception e) {
             System.err.println("Critical failure occurred when switching over to Printer Dashboard: " + e.getMessage());
@@ -593,7 +594,7 @@ public class FXTonersController implements Initializable {
 
         try {
             Stage currentStage = (Stage) saveBtn.getScene().getWindow();
-            nav.newStage(Stages.VENDORS_STAGE, "Prinventory - Vendor Dashboard", true);
+            nav.newStage(VENDORS_STAGE, "Prinventory - Vendor Dashboard", true);
             currentStage.hide();
         } catch (Exception e) {
             System.err.println("Critical failure occurred when switching over to Vendor Dashboard: " + e.getMessage());
